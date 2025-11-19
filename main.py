@@ -9,6 +9,13 @@ class AnalyzePRRequest(BaseModel):
     pr_number : int
     github_token : Optional['str'] = None
 
+@app.get("/{name}")
+def index(name: str):
+    return {"message": f"Hello, {name}!"}
+
+@app.get("/a")
+def a(data:str):
+    return {"message": f"Hello, {data}!"}
 
 @app.post("/start_task", status_code=status.HTTP_200_OK)
 async def start_task_endpoint(task_request: AnalyzePRRequest):
